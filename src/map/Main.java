@@ -19,8 +19,6 @@ public class Main {
 				0,
 				0
 		);
-		int minLevel = 1;
-		int maxLevel = 18;
 		//指定区域的地图左上角经纬度
 		LonLat myLeftTopLonLat = new LonLat(
 				85,
@@ -31,14 +29,19 @@ public class Main {
 				0,
 				-10
 		);
+		
+		DownLoadConfig config = new DownLoadConfig();
+		config.setLeftTopLonlat(leftTopLonlat);
+		config.setRightBottomLonLat(rightBottomLonLat);
+		config.setCenterLonlat(centerLonLat);
+		config.setMyLeftTopLonLat(myLeftTopLonLat);
+		config.setMyRightBottomLonLat(myRightBottomLonLat);
+		config.setMinLevel(1);
+		config.setMaxLevel(18);
+		
 		Persenter persenter = new Persenter();
-		persenter.setLeftTopLonlat(leftTopLonlat);
-		persenter.setRightBottomLonLat(rightBottomLonLat);
-		persenter.setCenterLonlat(centerLonLat);
-		persenter.setMyLeftTopLonLat(myLeftTopLonLat);
-		persenter.setMyRightBottomLonLat(myRightBottomLonLat);
-		boolean isStartDownLoad = persenter.startDownLoad();
-		System.out.println("isStartDownLoad = " + isStartDownLoad);
+		persenter.startDownLoad(config);
+		
 /*		double myWidth = getLength(myRightBottomLonLat.lon, myLeftTopLonLat.lon);
 		double myHeight = getLength(leftTopLonlat.lat, rightBottomLonLat.lat);
 		
